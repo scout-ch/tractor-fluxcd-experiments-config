@@ -70,7 +70,7 @@ spec:
       kubernetesGateway:
         enabled: true
     gateway:
-      listeners:
+      enabled: false
     service:
       spec:
         externalTrafficPolicy: Local # 👈 Preserve client source IP
