@@ -1,0 +1,66 @@
+#
+# RBAC
+#
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: whoami
+  
+  name: whoami
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: whoami
+  name: whoami
+  namespace: whoami
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: whoami
+  name: gotk-reconciler
+  namespace: whoami
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: whoami
+    namespace: whoami
+
+#
+# Sync
+#
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: whoami
+  namespace: whoami
+spec:
+  interval: 1h
+  ref:
+    branch: main
+  secretRef:
+    name: flux-git-deploy-key
+  url: ssh://git@github.com/scout-ch/tractor-fluxcd-experiments-config-whoami.git
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: whoami
+  namespace: whoami
+spec:
+  serviceAccountName: whoami
+  interval: 10m0s
+  path: .
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: whoami
