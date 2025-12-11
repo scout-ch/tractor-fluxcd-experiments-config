@@ -71,9 +71,6 @@ spec:
         enabled: true
     gateway:
       listeners:
-        web:
-          namespacePolicy:
-            from: All
     service:
       spec:
         externalTrafficPolicy: Local # 👈 Preserve client source IP
@@ -125,4 +122,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-    
+
+---
+
