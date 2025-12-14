@@ -1,3 +1,6 @@
+#
+# RBAC
+#
 ---
 apiVersion: v1
 kind: Namespace
@@ -5,6 +8,34 @@ metadata:
   labels:
     toolkit.fluxcd.io/tenant: cert-manager
   name: cert-manager
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: cert-manager
+  name: cert-manager
+  namespace: cert-manager
+---
+# cert-manager needs cluster-wide permissions to watch for IngressRoutes and provides CRDs
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: cert-manager
+  name: gotk-reconciler
+  namespace: cert-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: cert-manager
+    namespace: cert-manager
+#
+# Traefik HelmRelease
+#
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
@@ -22,6 +53,7 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
+  serviceAccount: cert-manager
   chart:
     spec:
       chart: cert-manager
