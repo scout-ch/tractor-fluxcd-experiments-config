@@ -23,7 +23,7 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     toolkit.fluxcd.io/tenant: traefik
-  name: gotk-reconciler
+  name: traefik-reconciler
   namespace: traefik
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -122,4 +122,3 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-    

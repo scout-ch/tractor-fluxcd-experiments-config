@@ -23,7 +23,7 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     toolkit.fluxcd.io/tenant: cert-manager
-  name: gotk-reconciler
+  name: cert-manager-reconciler
   namespace: cert-manager
 roleRef:
   apiGroup: rbac.authorization.k8s.io
