@@ -1,3 +1,22 @@
+#
+# Network policy for acmesolver
+#
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-acmesolver-ingress
+  namespace: flux-system
+spec:
+  podSelector:
+    matchLabels:
+      acme.cert-manager.io/http01-solver: "true"
+  ingress:
+    - from:
+        - podSelector: {}
+#
+# Gateway / Route
+#
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
@@ -5,7 +24,7 @@ metadata:
   name: webhook-receiver
   namespace: flux-system
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   gatewayClassName: traefik
   listeners:
