@@ -86,6 +86,7 @@ spec:
           insecure: true
         redirections:
           entryPoint:
+            priority: 1
             to: websecure
             scheme: https
             permanent: true
