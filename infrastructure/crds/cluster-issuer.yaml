@@ -26,8 +26,11 @@ spec:
     # Add a single challenge solver, HTTP01 using traefik
     solvers:
       - http01:
-          ingress:
-            ingressClassName: traefik
+          gatewayHTTPRoute:
+            parentRefs:
+              - name: cert-manager
+                namespace: cert-manager
+                kind: Gateway
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -56,5 +59,8 @@ spec:
     # Add a single challenge solver, HTTP01 using traefik
     solvers:
       - http01:
-          ingress:
-            ingressClassName: traefik
+          gatewayHTTPRoute:
+            parentRefs:
+              - name: cert-manager
+                namespace: cert-manager
+                kind: Gateway
