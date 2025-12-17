@@ -84,6 +84,11 @@ spec:
         port: 80
         proxyProtocol:
           insecure: true
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
       websecure:
         port: 443
         proxyProtocol:
