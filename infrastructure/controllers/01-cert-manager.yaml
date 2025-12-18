@@ -34,7 +34,7 @@ subjects:
     name: cert-manager
     namespace: cert-manager
 #
-# Traefik HelmRelease
+# cert-manager HelmRelease
 #
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
