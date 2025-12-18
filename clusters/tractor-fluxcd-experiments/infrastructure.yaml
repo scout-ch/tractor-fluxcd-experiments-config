@@ -12,6 +12,7 @@ spec:
   serviceAccountName: kustomize-controller
   path: ./infrastructure/controllers
   prune: true
+  wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
