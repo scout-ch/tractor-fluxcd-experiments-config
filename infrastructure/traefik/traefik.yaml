@@ -81,9 +81,9 @@ spec:
         enabled: true
     ports:
       web:
+        proxyProtocol:
+          insecure: true
         http:
-          proxyProtocol:
-            insecure: true
           redirections:
             entryPoint:
               priority: 1
@@ -91,9 +91,8 @@ spec:
               scheme: https
               permanent: true
       websecure:
-        http:
-          proxyProtocol:
-            insecure: true
+        proxyProtocol:
+          insecure: true
     deployment:
       replicas: 3
     resources:
