@@ -56,3 +56,5 @@ spec:
     replicas: 2
     tls:
       type: cert-manager
+    args:
+      - --kubelet-preferred-address-types=Hostname
