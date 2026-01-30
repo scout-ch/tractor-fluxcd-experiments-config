@@ -56,5 +56,8 @@ spec:
     replicas: 2
     tls:
       type: cert-manager
-    args:
-      - --kubelet-insecure-tls
+    defaultArgs:
+      - --cert-dir=/tmp
+      - --kubelet-preferred-address-types=Hostname
+      - --kubelet-use-node-status-port
+      - --metric-resolution=15s
