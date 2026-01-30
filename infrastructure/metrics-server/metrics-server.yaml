@@ -57,4 +57,4 @@ spec:
     tls:
       type: cert-manager
     args:
-      - --kubelet-preferred-address-types=Hostname
+      - --kubelet-insecure-tls
