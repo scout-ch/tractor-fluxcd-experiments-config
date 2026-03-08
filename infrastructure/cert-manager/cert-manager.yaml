@@ -47,6 +47,9 @@ spec:
   url: oci://quay.io/jetstack/charts/cert-manager
   ref:
     tag: v1.19.4
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
