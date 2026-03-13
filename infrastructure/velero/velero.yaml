@@ -40,7 +40,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: velero
-  namespace: traveleroefik
+  namespace: velero
 spec:
   interval: 1h
   url: https://vmware-tanzu.github.io/helm-charts
