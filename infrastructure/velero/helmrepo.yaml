@@ -1,0 +1,60 @@
+#
+# RBAC
+#
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: velero
+  name: velero
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: velero
+  name: velero
+  namespace: velero
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: velero
+  name: velero-reconciler
+  namespace: velero
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: velero
+    namespace: velero
+#
+# Velero Helm
+#
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: velero
+  namespace: traveleroefik
+spec:
+  interval: 1h
+  url: https://vmware-tanzu.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  interval: 5m0s
+  chart: velero
+  reconcileStrategy: ChartVersion
+  sourceRef:
+    kind: HelmRepository
+    name: velero
+  version: "11.4.0"
