@@ -65,6 +65,7 @@ metadata:
   name: velero
   namespace: velero
 spec:
+  serviceAccountName: velero
   interval: 15m
   timeout: 5m
   chartRef:
