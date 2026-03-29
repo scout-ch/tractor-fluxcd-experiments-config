@@ -96,6 +96,9 @@ spec:
         volumeMounts:
           - mountPath: /target
             name: plugins
+          - name: velero-credentials
+            mountPath: /etc/openstack
+            subPath: clouds.yaml
     backupsEnabled: false # created manually
     snapshotsEnabled: false
     configuration:
