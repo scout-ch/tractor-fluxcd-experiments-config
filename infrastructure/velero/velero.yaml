@@ -82,9 +82,13 @@ spec:
         secret:
           secretName: velero-credentials
           readOnly: true
+          items:
+            - key: clouds.yml
+              path: clouds.yml
     extraVolumeMounts:
       - name: velero-credentials
         mountPath: /etc/openstack
+        subPath: clouds.yml
     initContainers:
       - name: velero-plugin-openstack
         image: lirt/velero-plugin-for-openstack:v0.8.1
