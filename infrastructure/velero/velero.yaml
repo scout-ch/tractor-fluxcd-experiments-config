@@ -76,7 +76,7 @@ spec:
     mode: warn
   values:
     credentials:
-      extraSecretRef: "velero-credentials"
+      existingSecret: "velero-credentials"
     initContainers:
       - name: velero-plugin-openstack
         image: lirt/velero-plugin-for-openstack:v0.8.1
