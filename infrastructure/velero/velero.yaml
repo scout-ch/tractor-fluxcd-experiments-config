@@ -75,6 +75,8 @@ spec:
   driftDetection:
     mode: warn
   values:
+    credentials:
+      useSecret: false
     extraVolumes:
       - name: velero-credentials
         secret:
