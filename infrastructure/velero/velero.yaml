@@ -82,13 +82,9 @@ spec:
         secret:
           secretName: velero-credentials
           readOnly: true
-          items:
-            - key: clouds.yaml
-              path: clouds.yaml
     extraVolumeMounts:
       - name: velero-credentials
         mountPath: /etc/openstack
-        subPath: clouds.yaml
     backupsEnabled: false # created manually
     snapshotsEnabled: false
     configuration:
