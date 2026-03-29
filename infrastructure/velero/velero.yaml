@@ -84,4 +84,7 @@ spec:
         volumeMounts:
           - mountPath: /target
             name: plugins
-    backupsEnabled: true
+    backupsEnabled: false # created manually
+    snapshotsEnabled: false
+    configuration:
+      defaultVolumesToFsBackup: true
