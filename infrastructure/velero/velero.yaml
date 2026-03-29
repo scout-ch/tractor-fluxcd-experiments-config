@@ -88,7 +88,7 @@ spec:
         mountPath: /etc/openstack
     initContainers:
       - name: velero-plugin-openstack
-        image: lirt/velero-plugin-for-openstack:v0.8.1
+        image: lirt/velero-plugin-for-openstack:v0.8.2
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target
