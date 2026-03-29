@@ -9,4 +9,6 @@ spec:
   default: true
   objectStorage:
     bucket: k8s-backups
+  config:
+    cloud: infomaniak
   provider: community.openstack.org/openstack
