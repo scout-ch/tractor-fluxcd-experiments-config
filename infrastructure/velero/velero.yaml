@@ -77,6 +77,7 @@ spec:
   values:
     credentials:
       useSecret: false # created manually and in another path
+      extraSecretRef: os-swift-config
     extraVolumes:
       - name: velero-credentials
         secret:
