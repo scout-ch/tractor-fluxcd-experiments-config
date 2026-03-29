@@ -75,8 +75,14 @@ spec:
   driftDetection:
     mode: warn
   values:
-    credentials:
-      existingSecret: "velero-credentials"
+    extraVolumes:
+      - name: velero-credentials
+        secret:
+          secretName: velero-credentials
+          readOnly: true
+    extraVolumeMounts:
+      - name: velero-credentials
+        mountPath: /etc/openstack
     initContainers:
       - name: velero-plugin-openstack
         image: lirt/velero-plugin-for-openstack:v0.8.1
