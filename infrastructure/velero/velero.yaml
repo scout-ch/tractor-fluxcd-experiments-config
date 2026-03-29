@@ -76,7 +76,7 @@ spec:
     mode: warn
   values:
     credentials:
-      useSecret: false
+      useSecret: false # created manually and in another path
     extraVolumes:
       - name: velero-credentials
         secret:
