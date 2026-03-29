@@ -74,3 +74,14 @@ spec:
     namespace: velero
   driftDetection:
     mode: warn
+  values:
+    credentials:
+      extraSecretRef: "velero-credentials"
+    initContainers:
+      - name: velero-plugin-openstack
+        image: lirt/velero-plugin-for-openstack:v0.8.1
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+    backupsEnabled: true
