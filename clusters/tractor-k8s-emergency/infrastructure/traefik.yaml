@@ -19,7 +19,7 @@ spec:
       patch: |
         - op: add
           path: /spec/values/service/spec/loadBalancerIP
-          value: 83.228.201.60
+          value: 195.15.192.244
         - op: add
           path: /spec/values/service/nameOverride
-          value: traefik-tractor-fluxcd-experiments
+          value: traefik-tractor-k8s-emergency
