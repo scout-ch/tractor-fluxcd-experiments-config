@@ -23,3 +23,13 @@ spec:
         - op: add
           path: /spec/values/service/nameOverride
           value: traefik-tractor-k8s-emergency
+        - op: add
+          path: /spec/values/providers/kubernetesGateway/statusAddress
+          value:
+            service:
+              name: traefik-tractor-k8s-emergency
+        - op: add
+          path: /spec/values/providers/kubernetesIngress
+          value:
+            publishedService:
+              pathOverride: traefik/traefik-tractor-k8s-emergency
