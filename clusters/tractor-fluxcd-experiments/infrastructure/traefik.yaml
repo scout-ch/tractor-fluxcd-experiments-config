@@ -23,3 +23,13 @@ spec:
         - op: add
           path: /spec/values/service/nameOverride
           value: traefik-tractor-fluxcd-experiments
+        - op: add
+          path: /spec/values/providers/kubernetesGateway/statusAddress
+          value:
+            service:
+              name: traefik-tractor-fluxcd-experiments
+        - op: add
+          path: /spec/values/providers/kubernetesIngress
+          value:
+            publishedService:
+              pathOverride: traefik/traefik-tractor-fluxcd-experiments
