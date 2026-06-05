@@ -53,3 +53,10 @@ spec:
         - op: replace
           path: /spec/schedule
           value: 0 5 * * *
+    - target:
+        kind: BackupStorageLocation
+        name: infomaniak
+      patch: |-
+        - op: Add
+          path: /spec/objectStorage/prefix
+          value: "tractor-fluxcd-experiments"
