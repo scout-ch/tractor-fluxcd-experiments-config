@@ -34,7 +34,7 @@ spec:
         kind: BackupStorageLocation
         name: infomaniak
       patch: |-
-        - op: Add
+        - op: add
           path: /spec/objectStorage/prefix
           value: "tractor-fluxcd-experiments"
 ---
