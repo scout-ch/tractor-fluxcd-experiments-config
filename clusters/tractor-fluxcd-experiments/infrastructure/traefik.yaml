@@ -13,6 +13,15 @@ spec:
   path: ./infrastructure/traefik-crds
   prune: true
   wait: true
+  patches:
+    - target:
+        kind: Namespace
+        name: traefik
+      patch: |-
+        - op: add
+          path: /spec/metadata/annotations
+          value:
+            "tractor.scout.ch/instance-pool": "pck-ukhkrdx-pfa
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
