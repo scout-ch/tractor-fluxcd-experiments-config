@@ -8,6 +8,9 @@ metadata:
   labels:
     toolkit.fluxcd.io/tenant: whoami
   
+  annotations:
+    "tractor.scout.ch/instance-pool": pck-ukhkrdx-pfa
+  
   name: whoami
 ---
 apiVersion: v1
