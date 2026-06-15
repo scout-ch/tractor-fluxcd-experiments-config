@@ -17,12 +17,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure-kyverno-policies
+  name: infrastructure-kyverno-policy-instance-pool-selector
   namespace: flux-system
 spec:
   interval: 10m0s
   dependsOn:
-    - name: infrastructure-kyverno-instance-pool-selector
+    - name: infrastructure-kyverno
   sourceRef:
     kind: GitRepository
     name: flux-system
