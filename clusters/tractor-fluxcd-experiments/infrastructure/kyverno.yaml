@@ -22,7 +22,7 @@ metadata:
 spec:
   interval: 10m0s
   dependsOn:
-    - name: infrastructure-kyverno
+    - name: infrastructure-kyverno-instance-pool-selector
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -30,5 +30,4 @@ spec:
   path: ./infrastructure/kyverno-policies
   prune: true
   components:
-
-    - ./instance-pool-selector
+    - ./infrastructure/kyverno-policies/instance-pool-selector
