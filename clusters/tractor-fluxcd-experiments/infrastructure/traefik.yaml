@@ -37,9 +37,8 @@ spec:
         name: traefik
       patch: |-
         - op: add
-          path: /metadata/annotations
-          value:
-            "tractor.scout.ch/instance-pool": "pck-ukhkrdx-pfa
+          path: /metadata/annotations/tractor.scout.ch/instance-pool
+          value: "pck-ukhkrdx-pfa"
     - target:
         kind: HelmRelease
       patch: |
