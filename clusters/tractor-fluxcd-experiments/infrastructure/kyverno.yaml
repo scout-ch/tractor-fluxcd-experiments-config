@@ -31,5 +31,4 @@ spec:
   prune: true
   components:
 
-    - ./instance-pool-selector.yaml
-
+    - ./instance-pool-selector
