@@ -58,3 +58,10 @@ spec:
           value:
             publishedService:
               pathOverride: traefik/traefik-tractor-fluxcd-experiments
+
+        - op: add
+          path: /spec/values/deployment
+          value:
+            replicas: 3
+      
+
