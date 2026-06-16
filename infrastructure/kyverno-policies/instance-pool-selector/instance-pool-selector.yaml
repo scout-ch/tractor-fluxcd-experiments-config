@@ -43,11 +43,8 @@ spec:
           - cronjobs
 
   variables:
-    - name: ns
-      expression: resource.Get("v1", "namespaces", "", object.metadata.namespace)
-
     - name: instancePool
-      expression: ns.metadata.annotations["tractor.scout.ch/instance-pool"]
+      expression: resource.Get("v1", "namespaces", "", object.metadata.namespace).metadata.annotations["tractor.scout.ch/instance-pool"]
 
   mutations:
     - patchType: JSONPatch
