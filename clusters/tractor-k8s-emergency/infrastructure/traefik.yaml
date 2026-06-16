@@ -51,3 +51,10 @@ spec:
           value:
             publishedService:
               pathOverride: traefik/traefik-tractor-k8s-emergency
+
+        - op: add
+          path: /spec/values/deployment
+          value:
+            replicas: 3
+      
+
