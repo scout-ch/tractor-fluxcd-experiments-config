@@ -47,8 +47,15 @@ spec:
           - cronjobs
 
   variables:
+    - name: ns
+      expression: resource.Get("v1", "namespaces", "", object.metadata.namespace)
+
     - name: instancePool
-      expression: resource.Get("v1", "namespaces", "", object.metadata.namespace).metadata.annotations["tractor.scout.ch/instance-pool"]
+      expression: >
+        has(ns.metadata.annotations)
+        && "tractor.scout.ch/instance-pool" in ns.metadata.annotations
+        ? ns.metadata.annotations["tractor.scout.ch/instance-pool"]
+        : null
 
   mutations:
     - patchType: JSONPatch
