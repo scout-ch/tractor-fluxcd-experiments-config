@@ -13,6 +13,18 @@ spec:
   path: ./infrastructure/kyverno
   prune: true
   wait: true
+  patches:
+    - target:
+        kind: HelmRelease
+        name: kyverno
+      patch: |-
+        - op: add
+          path: /spec/values/backgroundController
+          value:
+            resources:
+              limits:
+                memory: 512Mi
+
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
