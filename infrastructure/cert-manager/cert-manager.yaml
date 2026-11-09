@@ -64,7 +64,7 @@ spec:
     kind: OCIRepository
   install:
     createNamespace: true
-  interval: 1m0s
+  interval: 10m
   releaseName: cert-manager
   storageNamespace: cert-manager
   targetNamespace: cert-manager
